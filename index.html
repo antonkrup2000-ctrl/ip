@@ -1,85 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>about:blank (keeps iframe URL)</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anton Web</title>
   <style>
-    html,body {
-      height:100%;
-      margin:0;
-      background:#000;
-      color:#fff;
-      font-family:system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
     }
-    #loader {
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:22px;
-      user-select:none;
-    }
-    /* iframe stays hidden by default so nothing loads/appears */
-    iframe#targetFrame {
-      display:none;
-      width:100%;
-      height:100%;
-      border:0;
-    }
-    /* optional: small helper text (hidden by default) */
-    #hint {
-      position:fixed;
-      right:12px;
-      bottom:12px;
-      opacity:0.45;
-      font-size:12px;
-      pointer-events:none;
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- This remains visible — the "about:blank" UI -->
-  <div id="loader">about:blank</div>
-
-  <!-- iframe does NOT have src set so it DOES NOT automatically load.
-       Your URL is stored in data-src so it's present in the file. -->
-  <iframe id="targetFrame" data-src="https://adverse-hildagard-antonkrupinski-b72d3014.koyeb.app/"></iframe>
-
-  <!-- Optional tiny hint (you can remove this if you want) -->
-  <div id="hint">Press <strong>L</strong> to load iframe (disabled by default)</div>
+  <iframe id="frame"></iframe>
 
   <script>
-    // Intentionally do nothing on load so page stays at about:blank.
-    // The target URL is stored in the iframe's data-src attribute above.
-
-    // Optional: press "L" to load the iframe (handy for testing).
-    // If you don't want this behavior at all, you can remove the block below.
-    (function(){
-      const frame = document.getElementById('targetFrame');
-      const hint = document.getElementById('hint');
-
-      // Hide hint by default; uncomment to show the small hint on-screen:
-      // hint.style.display = 'block';
-      hint.style.display = 'none';
-
-      window.addEventListener('keydown', (e) => {
-        // Press uppercase or lowercase L
-        if (e.key === 'L' || e.key === 'l') {
-          // Load the iframe (this will attempt to load the URL and may be blocked if site disallows framing)
-          const url = frame.getAttribute('data-src');
-          if (url) {
-            frame.src = url;
-            // show the iframe (and hide about:blank)
-            document.getElementById('loader').style.display = 'none';
-            frame.style.display = 'block';
-          }
-        }
-      }, { once: false });
-    })();
+    // Automatically load your URL
+    document.getElementById("frame").src =
+      "https://adverse-hildagard-antonkrupinski-b72d3014.koyeb.app/";
   </script>
+
 </body>
 </html>
+
+</body>
+</html>
+
